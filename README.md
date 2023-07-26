@@ -13,5 +13,5 @@ La aplicación consta de dos partes:
 ## Herramientas que se van a utilizar
 - **Task runner:** PoethePoet    
 - **Gestor de dependencias:** Poetry     
-- - **Tests:** pytest    
+- **Tests:** pytest    
 
