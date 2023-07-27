@@ -15,6 +15,7 @@ pytest = "^7.4.0"
 
 [tool.poe.tasks]
 test = "poetry run pytest"
+install = "poetry install"
 
 [build-system]
 requires = ["poetry-core"]
