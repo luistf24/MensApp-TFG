@@ -43,7 +43,7 @@ def escuchar_clientes(sc):
 while True:
     socket_cliente, direccion_cliente = socket_servidor.accept()
 
-    printf("[+] {direccion_cliente} se ha conectado.")
+    print("[+] {direccion_cliente} se ha conectado.")
 
     sockets_usuarios[socket_cliente] = "UsuarioTemporal"
 
