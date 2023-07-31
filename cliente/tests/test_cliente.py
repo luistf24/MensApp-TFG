@@ -24,4 +24,4 @@ def test_cifrar_descifrar():
     mensaje_cifrado, tag, nonce = encriptar(mensaje, "prueba")
     mensaje_descifrado = desencriptar(mensaje_cifrado, "prueba", tag, nonce)
 
-    assert mensaje == mensaje_descifrado.decode('utf-8')
+    assert mensaje == mensaje_descifrado
