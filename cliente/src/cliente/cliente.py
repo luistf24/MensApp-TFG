@@ -3,10 +3,7 @@
 import socket
 from Crypto.Cipher import AES
 from threading import Thread
-
-SERVER_IP    = "127.0.0.1"
-SERVER_PORT  = 3333
-separador    = "<->"
+from biblioteca_cliente import *
 
 server_socket = socket.socket()
 server_socket.connect((SERVER_IP, SERVER_PORT))
