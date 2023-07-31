@@ -16,15 +16,16 @@ def vaciar_bloque(mensaje):
 
 def encriptar(mensaje, passw):
     iv = 0
-    clave_privada = hashlib.scrypt(passw.encode(), salt=iv, n=2**14, r=8, p=1, dklen=32)
+    clave_privada = hashlib.scrypt(passw.encode(), salt=iv.to_bytes(16, 'big'), n=2**14, r=8, p=1, dklen=32)
     aes = AES.new(clave_privada, AES.MODE_GCM)
     mensaje_cifrado, tag= aes.encrypt_and_digest(bytes(mensaje, 'utf-8'))
+    nonce = aes.nonce
 
-    return mensaje_cifrado, tag
+    return mensaje_cifrado, tag, nonce
 
-def desencriptar(mensaje_cifrado, passw, tag):
+def desencriptar(mensaje_cifrado, passw, tag, nonce):
     iv = 0
-    clave_privada = hashlib.scrypt(passw.encode(), salt=iv, n=2**14, r=8, p=1, dklen=32)
+    clave_privada = hashlib.scrypt(passw.encode(), salt=iv.to_bytes(16, 'big'), n=2**14, r=8, p=1, dklen=32)
     aes = AES.new(clave_privada, AES.MODE_GCM, nonce=nonce)
     mensaje = aes.decrypt_and_verify(mensaje_cifrado, tag)
 
