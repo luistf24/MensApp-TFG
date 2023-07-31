@@ -8,6 +8,7 @@ packages = [{include = "cliente", from = "src"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
+pycryptodome = "^3.18.0"
 
 [tool.poetry.group.dev.dependencies]
 poethepoet = "^0.21.1"
@@ -16,6 +17,7 @@ pytest = "^7.4.0"
 [tool.poe.tasks]
 test = "poetry run pytest"
 install = "poetry install"
+run = "poetry run src/cliente/cliente.py"
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,4 +1,7 @@
+#!/usr/bin/env python
+
 import socket
+from Crypto.Cipher import AES
 from threading import Thread
 
 SERVER_IP    = "127.0.0.1"
