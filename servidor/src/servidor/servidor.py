@@ -21,12 +21,15 @@ def escuchar_clientes(sc):
             print("[!] Error: {}".format(error))
 
         else:
-            emisor   = mensaje_completo.split(separador, 2)[0]
-            receptor = mensaje_completo.split(separador, 2)[1] 
-            mensaje  = mensaje_completo.split(separador, 2)[2]
+            if separador in mensaje_completo:
+                emisor   = mensaje_completo.split(separador, 2)[0]
+                receptor = mensaje_completo.split(separador, 2)[1] 
+                mensaje  = mensaje_completo.split(separador, 2)[2]
+            else:
+                receptor = "NotFoundError"
 
             if(receptor == "servidor"): # Almacenamos el id del usuario, este caso solo se da cuando se regis-
-                                    # tra un usuario con un id que se almacenará en el mensaje sin cifrar.
+                                        # tra un usuario con un id que se almacenará en el mensaje sin cifrar.
                 sockets_usuarios[sc] = mensaje 
 
             else:
