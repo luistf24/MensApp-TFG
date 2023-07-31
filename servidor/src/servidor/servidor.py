@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import socket
 from threading import Thread
 from biblioteca_servidor import *
@@ -22,9 +24,12 @@ def escuchar_clientes(sc):
 
         else:
             if separador in mensaje_completo:
-                emisor   = mensaje_completo.split(separador, 2)[0]
-                receptor = mensaje_completo.split(separador, 2)[1] 
-                mensaje  = mensaje_completo.split(separador, 2)[2]
+                emisor   = mensaje_completo.split(separador, 4)[0]
+                receptor = mensaje_completo.split(separador, 4)[1] 
+                mensaje  = mensaje_completo.split(separador, 4)[2]
+                tag      = mensaje_completo.split(separador, 4)[3]
+                nonce    = mensaje_completo.split(separador, 4)[4]
+
             else:
                 receptor = "NotFoundError"
 
