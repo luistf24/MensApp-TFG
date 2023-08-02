@@ -22,7 +22,8 @@ destinatario = input("Usuario destinatario de los mensajes: ")
 
 cifrado = False
 
-clave = random.randint(1, 9)
+clave = random.randint(1, 12)
+generador = 2
 
 
 def get_mensajes():
@@ -42,12 +43,12 @@ def get_mensajes():
             # Si este cliente no ha mandado el mensaje inicial, entonces envía su clave
             if cifrado == False:
                 print("\n" + emisor + ": "+ mensaje)
-                envio = usuario + separador + destinatario + separador + "  " + separador + "intercambio" + separador + str(clave) 
+                envio = usuario + separador + destinatario + separador + "  " + separador + "intercambio" + separador + str(pow(generador, clave, 13)) 
                 server_socket.send(envio.encode())
                 cifrado = True
 
             # Operación para obtener la clave común
-            clave = clave * int(nonce)
+            clave = pow(int(nonce), clave, 13)
 
         else:
             mensaje_descifrado = desencriptar(mensaje, str(clave), tag, nonce)
@@ -71,7 +72,7 @@ while True:
 
     # Si el usuario inicia la conversación, envía un primer mensaje sin cifrar, una vez recibido empieza el intercambio de claves
     else:
-        envio = usuario + separador + destinatario + separador + mensaje_enviar + separador + "intercambio" + separador + str(clave)
+        envio = usuario + separador + destinatario + separador + mensaje_enviar + separador + "intercambio" + separador + str(pow(generador, clave, 13))
         server_socket.send(envio.encode())
         cifrado = True
 
