@@ -7,11 +7,13 @@ from biblioteca_cliente import *
 from interfaz import *
 
 
-BG_GRAY = "#ABB2B9"
-BG_COLOR = "#17202A"
+BG_NARANJA = "#F38016"
+BG_AZUL = "#004080"
+BG_BLANCO = "#ffffff"
+BG_GRIS = "#AFAFAF"
 TEXT_COLOR = "#EAECEE"
  
-FONT = "Iosevka 14"
+FONT = "Roboto 14"
 FONT_BOLD = "Helvetica 13 bold"
  
 
@@ -27,18 +29,18 @@ class Ventana1:
 
         self.master = master
         self.frame = Frame(self.master)
-        self.lable1 = Label(self.master, bg=BG_COLOR, fg=TEXT_COLOR, text="Usuario: " + self.usuario, font=FONT_BOLD, pady=10, width=20, height=1).grid(row=0, column=0)
+        self.label1 = Label(self.master, bg=BG_AZUL, fg=BG_NARANJA, text="Usuario: " + self.usuario, font=FONT_BOLD, pady=10, width=20, height=1).grid(row=0, column=0)
         
-        self.txt = Text(self.master, bg=BG_COLOR, fg=TEXT_COLOR, font=FONT, width=60)
+        self.txt = Text(self.master, bg=BG_AZUL, fg=BG_BLANCO, font=FONT, width=60)
         self.txt.grid(row=1, column=0, columnspan=2)
 
         self.scrollbar = Scrollbar(self.txt)
         self.scrollbar.place(relheight=1, relx=0.974)
 
-        self.entrada = Entry(self.master, bg="#2C3E50", fg=TEXT_COLOR, font=FONT, width=55)
+        self.entrada = Entry(self.master, bg=BG_AZUL, fg=BG_BLANCO, font=FONT, width=55)
         self.entrada.grid(row=2, column=0)
 
-        self.send = Button(self.master, text="Enviar", font=FONT_BOLD, bg=BG_GRAY, command=self.enviar).grid(row=2, column=1)
+        self.send = Button(self.master, text="Enviar", font=FONT_BOLD, bg=BG_BLANCO, fg=BG_NARANJA, command=self.enviar).grid(row=2, column=1)
 
         self.thread = Thread(target=self.get_mensajes)
         self.thread.daemon = True
@@ -95,22 +97,19 @@ class Ventana2:
 
         self.server_socket = server_socket
         self.master = master
-        self.frame = Frame(self.master)
-        self.lable1 = Label(self.master, bg=BG_COLOR, fg=TEXT_COLOR, text="MensApp", font=FONT_BOLD, pady=10, width=20, height=1).grid(row=0, column=1)
+        self.frame = Frame(self.master, bg='white')
+        self.label1 = Label(self.master, bg=BG_BLANCO, fg=BG_AZUL, text="MensApp", font=FONT_BOLD, pady=10, width=20, height=1).grid(row=0, column=0)
 
-        self.label_usuario = Label(self.master, bg=BG_COLOR, fg=TEXT_COLOR, text="Usuario emisor:", font=FONT_BOLD, pady=5, width=20).grid(row=2, column=0)
-        self.label_destinatario = Label(self.master, bg=BG_COLOR, fg=TEXT_COLOR, text="Usuario receptor:", font=FONT_BOLD, pady=5, width=20).grid(row=3, column=0)
+        self.label_usuario = Label(self.master, bg=BG_AZUL, fg=BG_BLANCO, text="Usuario emisor:", font=FONT_BOLD, pady=5, width=20).grid(row=2, column=0)
+        self.label_destinatario = Label(self.master, bg=BG_AZUL, fg=BG_BLANCO, text="Usuario receptor:", font=FONT_BOLD, pady=5, width=20).grid(row=3, column=0)
 
-        self.entrada_emisor = Entry(self.master, bg=BG_COLOR, fg=TEXT_COLOR, font=FONT, width=55)
+        self.entrada_emisor = Entry(self.master, bg=BG_GRIS, fg=TEXT_COLOR, font=FONT, width=55)
         self.entrada_emisor.grid(row=2, column=1)
 
-        self.entrada_receptor = Entry(self.master, bg=BG_COLOR, fg=TEXT_COLOR, font=FONT, width=55)
+        self.entrada_receptor = Entry(self.master, bg=BG_GRIS, fg=TEXT_COLOR, font=FONT, width=55)
         self.entrada_receptor.grid(row=3, column=1)
 
-        self.send = Button(self.master, text="Aceptar", font=FONT_BOLD, bg=BG_GRAY,command=self.new_window).grid(row=4, column=1, sticky="nsew")
-
-    def close_windows(self):
-        self.master.destroy()
+        self.send = Button(self.master, text="Aceptar", font=FONT_BOLD, fg=BG_NARANJA, bg=BG_AZUL,command=self.new_window).grid(row=4, column=1, sticky="nsew")
 
     def new_window(self):
         self.usuario = self.entrada_emisor.get()

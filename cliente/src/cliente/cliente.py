@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 
 import socket
-from threading import Thread
 from tkinter import *
-import random
 from biblioteca_cliente import *
 from interfaz import *
 
