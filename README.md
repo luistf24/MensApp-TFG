@@ -4,13 +4,13 @@ Trabajo de fin de grado de Ingeniería Informática y Matemáticas [Criptosistem
 
 ## ¿Qué es MensApp?
 MensApp es una aplicación de mensajería en la cual se aplicaran algunos de los criptosistemas vistos durante el desarrollo del TFG.   
-Algunas de las herramientas que se utilizarán son: Cifrado *AES*, intercambio de claves *Diffie-Hellman*,...      
+Para garantizar la seguridad de los mensajes se utiliza cifrado *AES* con el modo *GCM* y el intercambio de claves *Diffie-Hellman*.      
 
 La aplicación consta de dos partes:    
-- El cliente será la aplicación principal y la que ejecutarán la mayor parte de los usuarios. Constará de interfaz gráfica.     
-- El servidor solo se ejecutará en un dispositivo y no tendrá interfaz gráfica.      
+- El cliente. Esta es la aplicación principal y la que ejecutarán la mayor parte de los usuarios.         
+- El servidor. Esta solo se ejecutará en un dispositivo.    
 
-## Herramientas que se van a utilizar
+## Herramientas utilizadas para el desarrollo de la aplicación
 - **Task runner:** PoethePoet    
 - **Gestor de dependencias:** Poetry     
 - **Tests:** pytest    
